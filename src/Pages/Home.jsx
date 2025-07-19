@@ -11,8 +11,6 @@ import {
   FaMapMarkerAlt,
   FaPlay,
   FaArrowRight,
-  FaShieldAlt,
-  FaTruck,
 } from "react-icons/fa";
 import {
   MdLocalShipping,
@@ -22,43 +20,14 @@ import {
 } from "react-icons/md";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { stats, features, testimonials } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
+import { handleCall, handleVisit, handleWhatsApp } from "../utils/functions";
 
 const ByorekoHomepage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const navigate = useNavigate();
   const backgroundImage = "./blue.jpg";
-  const stats = [
-    { number: "500+", label: "Happy Customers" },
-    { number: "15+", label: "Years Experience" },
-    { number: "99%", label: "Satisfaction Rate" },
-  ];
-
-  const features = [
-    { icon: FaShieldAlt, text: "Certified Dealer" },
-    { icon: FaTools, text: "Expert Service" },
-    { icon: FaTruck, text: "Genuine Parts" },
-  ];
-
-  const testimonials = [
-    {
-      name: "James Mukasa",
-      business: "Kampala Transport Services",
-      text: "Byoreko Holdings provided excellent service when I purchased my Kainiu tuktuk. The quality is outstanding and their after-sales support is unmatched.",
-      rating: 5,
-    },
-    {
-      name: "Sarah Namuli",
-      business: "Downtown Delivery",
-      text: "I've been using Byoreko for spare parts and maintenance for 2 years. They're reliable, professional, and always have genuine Kainiu parts in stock.",
-      rating: 5,
-    },
-    {
-      name: "Peter Ssemakula",
-      business: "City Ride Services",
-      text: "The financing options made it possible for me to expand my fleet. Byoreko's team guided me through every step of the process.",
-      rating: 5,
-    },
-  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -122,13 +91,19 @@ const ByorekoHomepage = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="group bg-[#FF8C42] text-white px-8 py-4 rounded-xl font-semibold hover:bg-orange-600 transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <button
+                  onClick={() => navigate("/products")}
+                  className="group bg-[#FF8C42] text-white px-8 py-4 rounded-xl font-semibold hover:bg-orange-600 transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
                   <FaShoppingCart className="text-lg" />
                   <span>Explore TukTuks</span>
                   <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
                 </button>
 
-                <button className="group border-2 border-white/80 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[#2E4A9E] transition-all duration-300 flex items-center justify-center space-x-3 backdrop-blur-sm">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="group border-2 border-white/80 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[#2E4A9E] transition-all duration-300 flex items-center justify-center space-x-3 backdrop-blur-sm"
+                >
                   <FaPhone className="text-lg" />
                   <span>Get Free Quote</span>
                 </button>
@@ -185,7 +160,11 @@ const ByorekoHomepage = () => {
 
                   {/* Contact Options */}
                   <div className="space-y-4">
-                    <div className="bg-[#FF8C42] rounded-2xl p-6 hover:bg-orange-600 transition-colors cursor-pointer group">
+                    {/* Call Now */}
+                    <div
+                      onClick={handleCall}
+                      className="bg-[#FF8C42] rounded-2xl p-6 hover:bg-orange-600 transition-colors cursor-pointer group"
+                    >
                       <div className="flex items-center space-x-4">
                         <div className="bg-white/20 p-3 rounded-full">
                           <FaPhone className="text-white text-xl" />
@@ -195,14 +174,18 @@ const ByorekoHomepage = () => {
                             Call Now
                           </div>
                           <div className="text-white/90 text-lg">
-                            +256 700 123 456
+                            +256 744 688 477
                           </div>
                         </div>
                         <FaArrowRight className="text-white ml-auto group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
 
-                    <div className="bg-green-600 rounded-2xl p-6 hover:bg-green-700 transition-colors cursor-pointer group">
+                    {/* WhatsApp */}
+                    <div
+                      onClick={handleWhatsApp}
+                      className="bg-green-600 rounded-2xl p-6 hover:bg-green-700 transition-colors cursor-pointer group"
+                    >
                       <div className="flex items-center space-x-4">
                         <div className="bg-white/20 p-3 rounded-full">
                           <FaWhatsapp className="text-white text-xl" />
@@ -217,7 +200,11 @@ const ByorekoHomepage = () => {
                       </div>
                     </div>
 
-                    <div className="bg-white/20 rounded-2xl p-6 hover:bg-white/30 transition-colors cursor-pointer group">
+                    {/* Visit Us */}
+                    <div
+                      onClick={handleVisit}
+                      className="bg-white/20 rounded-2xl p-6 hover:bg-white/30 transition-colors cursor-pointer group"
+                    >
                       <div className="flex items-center space-x-4">
                         <div className="bg-[#FF8C42]/20 p-3 rounded-full">
                           <FaMapMarkerAlt className="text-[#FF8C42] text-xl" />
@@ -502,11 +489,17 @@ const ByorekoHomepage = () => {
             Contact us today for a free consultation and quote
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-[#FF8C42] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors montserrat flex items-center space-x-2">
+            <button
+              onClick={() => handleCall()}
+              className="bg-white text-[#FF8C42] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors montserrat flex items-center space-x-2"
+            >
               <FaPhone />
               <span>Call Now</span>
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#FF8C42] transition-colors montserrat flex items-center space-x-2">
+            <button
+              onClick={() => handleWhatsApp()}
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#FF8C42] transition-colors montserrat flex items-center space-x-2"
+            >
               <FaWhatsapp />
               <span>WhatsApp</span>
             </button>

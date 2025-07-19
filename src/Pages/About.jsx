@@ -27,99 +27,10 @@ import {
 } from "react-icons/md";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { abstats as stats, teamMembers, milestones } from "../utils/constants";
 
 const AboutUsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const teamMembers = [
-    {
-      name: "John Byoreko",
-      position: "Chief Executive Officer",
-      experience: "15+ years in automotive industry",
-      description:
-        "Visionary leader with extensive experience in the transportation sector across East Africa.",
-    },
-    {
-      name: "Sarah Namakula",
-      position: "Operations Manager",
-      experience: "12+ years in operations",
-      description:
-        "Expert in streamlining operations and ensuring customer satisfaction across all service points.",
-    },
-    {
-      name: "Michael Ssemakula",
-      position: "Technical Director",
-      experience: "18+ years in automotive repair",
-      description:
-        "Master technician specializing in three-wheeler vehicles and Kainiu systems.",
-    },
-    {
-      name: "Grace Nakato",
-      position: "Sales & Marketing Manager",
-      experience: "10+ years in sales",
-      description:
-        "Passionate about connecting customers with the perfect transportation solutions.",
-    },
-  ];
-
-  const milestones = [
-    {
-      year: "2018",
-      title: "Company Founded",
-      description:
-        "Byoreko Holdings established with a vision to revolutionize Uganda's transport sector",
-    },
-    {
-      year: "2019",
-      title: "Kainiu Partnership",
-      description:
-        "Became official authorized dealer for Kainiu three-wheelers in Uganda",
-    },
-    {
-      year: "2020",
-      title: "Service Center Launch",
-      description:
-        "Opened state-of-the-art repair and maintenance facility in Kampala",
-    },
-    {
-      year: "2021",
-      title: "Regional Expansion",
-      description: "Extended services to cover multiple regions across Uganda",
-    },
-    {
-      year: "2022",
-      title: "1000+ Customers",
-      description: "Reached milestone of serving over 1000 satisfied customers",
-    },
-    {
-      year: "2024",
-      title: "Digital Innovation",
-      description: "Launched online platform for enhanced customer experience",
-    },
-  ];
-
-  const stats = [
-    {
-      number: "1500+",
-      label: "TukTuks Sold",
-      icon: <MdLocalShipping className="text-4xl text-[#FF8C42]" />,
-    },
-    {
-      number: "5000+",
-      label: "Repairs Completed",
-      icon: <FaTools className="text-4xl text-[#FF8C42]" />,
-    },
-    {
-      number: "98%",
-      label: "Customer Satisfaction",
-      icon: <FaStar className="text-4xl text-[#FF8C42]" />,
-    },
-    {
-      number: "24/7",
-      label: "Support Available",
-      icon: <MdSupport className="text-4xl text-[#FF8C42]" />,
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -140,7 +51,7 @@ const AboutUsPage = () => {
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <div className="flex items-center space-x-2">
                 <FaCalendarAlt className="text-[#FF8C42]" />
-                <span>Established 2018</span>
+                <span>Established 2024</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MdVerified className="text-[#FF8C42]" />
@@ -165,16 +76,17 @@ const AboutUsPage = () => {
               </h2>
               <div className="space-y-4 text-gray-700 raleway">
                 <p className="text-lg">
-                  Founded in 2018 with a simple yet powerful vision: to
+                  Founded in 2024 with a simple yet powerful vision: to
                   transform Uganda's transportation landscape through reliable,
                   affordable, and innovative three-wheeler solutions.
                 </p>
                 <p>
-                  What started as a small venture has grown into Uganda's most
-                  trusted Kainiu dealer, serving over 1,500 customers across the
-                  country. Our journey began when our founder recognized the
-                  growing need for efficient, cost-effective transportation
-                  solutions in Uganda's rapidly developing economy.
+                  What started as a small venture that has grown into Uganda's
+                  most trusted Kainiu dealer, serving over 1,500 customers
+                  across the country. Our journey began when our founder
+                  recognized the growing need for efficient, cost-effective
+                  transportation solutions in Uganda's rapidly developing
+                  economy.
                 </p>
                 <p>
                   Today, Byoreko Holdings stands as a beacon of excellence in
@@ -375,6 +287,7 @@ const AboutUsPage = () => {
       {/* Kainiu Partnership Section */}
       <section className="py-20 bg-[#2E4A9E] text-white">
         <div className="container mx-auto px-4">
+          <img src="./logo2.png" alt="" className="w-15 inline items-center" />
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold playfair-display mb-6">

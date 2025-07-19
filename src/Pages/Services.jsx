@@ -1,259 +1,23 @@
 import React, { useState } from "react";
 import {
-  FaCar,
-  FaTools,
-  FaCog,
   FaPhone,
   FaWhatsapp,
   FaCalendarAlt,
   FaCheckCircle,
-  FaShieldAlt,
-  FaUsers,
-  FaClock,
-  FaMapMarkerAlt,
-  FaArrowRight,
-  FaWrench,
-  FaOilCan,
-  FaBatteryHalf,
-  FaRoad,
-  FaHandshake,
-  FaAward,
-  FaHeadset,
   FaChevronDown,
   FaChevronUp,
 } from "react-icons/fa";
-import { IoSpeedometer, IoConstruct, IoShield } from "react-icons/io5";
-import { MdElectricBolt, MdInventory, MdSecurity } from "react-icons/md";
-import { GiCarWheel, GiMechanicGarage } from "react-icons/gi";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { detailedServices, faqs, services } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
+import { handleCall, handleWhatsApp } from "../utils/functions";
 
 const ServicesPage = () => {
   const [activeService, setActiveService] = useState("sales");
   const [expandedFaq, setExpandedFaq] = useState(null);
-
-  const services = [
-    {
-      id: "sales",
-      title: "TukTuk Sales",
-      icon: <FaCar className="text-4xl" />,
-      description: "Premium Kainiu TukTuks with warranty and financing options",
-      features: [
-        "New Models Available",
-        "Financing Options",
-        "Warranty Included",
-        "Delivery Service",
-      ],
-    },
-    {
-      id: "repairs",
-      title: "Repairs & Maintenance",
-      icon: <FaTools className="text-4xl" />,
-      description: "Expert repair services by certified technicians",
-      features: [
-        "Certified Technicians",
-        "Genuine Parts",
-        "Quick Turnaround",
-        "Emergency Service",
-      ],
-    },
-    {
-      id: "spares",
-      title: "Spare Parts",
-      icon: <FaCog className="text-4xl" />,
-      description: "Genuine Kainiu spare parts and accessories",
-      features: [
-        "Genuine Parts",
-        "Bulk Orders",
-        "Fast Delivery",
-        "Installation Service",
-      ],
-    },
-  ];
-
-  const detailedServices = {
-    sales: {
-      title: "TukTuk Sales",
-      subtitle: "Premium Kainiu TukTuks for Your Business",
-      description:
-        "Discover our range of reliable, efficient TukTuks perfect for passenger transport and cargo delivery across Uganda.",
-      features: [
-        {
-          icon: <FaShieldAlt />,
-          title: "Quality Assurance",
-          desc: "12-month comprehensive warranty on all new vehicles",
-        },
-        {
-          icon: <FaHandshake />,
-          title: "Flexible Financing",
-          desc: "Easy payment plans tailored to your budget",
-        },
-        {
-          icon: <FaMapMarkerAlt />,
-          title: "Free Delivery",
-          desc: "Complimentary delivery within Kampala metropolitan area",
-        },
-        {
-          icon: <FaUsers />,
-          title: "Expert Guidance",
-          desc: "Professional consultation to choose the right model",
-        },
-      ],
-      models: [
-        {
-          name: "Kainiu Passenger",
-          price: "UGX 18,500,000",
-          features: [
-            "7-seater capacity",
-            "Fuel efficient engine",
-            "Comfortable seating",
-          ],
-        },
-        {
-          name: "Kainiu Cargo",
-          price: "UGX 16,800,000",
-          features: [
-            "High payload capacity",
-            "Durable construction",
-            "Easy loading",
-          ],
-        },
-        {
-          name: "Kainiu Deluxe",
-          price: "UGX 21,200,000",
-          features: [
-            "Premium interior",
-            "Enhanced safety features",
-            "Superior comfort",
-          ],
-        },
-      ],
-    },
-    repairs: {
-      title: "Repairs & Maintenance",
-      subtitle: "Keep Your TukTuk Running Smoothly",
-      description:
-        "Professional repair and maintenance services to ensure your TukTuk operates at peak performance.",
-      features: [
-        {
-          icon: <FaAward />,
-          title: "Certified Technicians",
-          desc: "Factory-trained mechanics with expertise in Kainiu systems",
-        },
-        {
-          icon: <FaClock />,
-          title: "Quick Service",
-          desc: "Most repairs completed within 24-48 hours",
-        },
-        {
-          icon: <IoShield />,
-          title: "Quality Parts",
-          desc: "Only genuine Kainiu parts used in all repairs",
-        },
-        {
-          icon: <FaHeadset />,
-          title: "24/7 Support",
-          desc: "Emergency breakdown assistance available",
-        },
-      ],
-      services: [
-        {
-          icon: <FaWrench />,
-          name: "Engine Repair",
-          desc: "Complete engine diagnostics and repair services",
-        },
-        {
-          icon: <FaOilCan />,
-          name: "Regular Maintenance",
-          desc: "Scheduled maintenance to prevent breakdowns",
-        },
-        {
-          icon: <MdElectricBolt />,
-          name: "Electrical Systems",
-          desc: "Wiring, lighting, and electrical component repairs",
-        },
-        {
-          icon: <GiCarWheel />,
-          name: "Suspension & Brakes",
-          desc: "Safety-critical systems maintenance and repair",
-        },
-      ],
-    },
-    spares: {
-      title: "Spare Parts",
-      subtitle: "Genuine Kainiu Parts & Accessories",
-      description:
-        "Complete inventory of authentic spare parts to keep your TukTuk running efficiently.",
-      features: [
-        {
-          icon: <MdSecurity />,
-          title: "Genuine Parts",
-          desc: "Only authentic Kainiu parts for optimal performance",
-        },
-        {
-          icon: <MdInventory />,
-          title: "Large Inventory",
-          desc: "Extensive stock of commonly needed parts",
-        },
-        {
-          icon: <FaRoad />,
-          title: "Fast Delivery",
-          desc: "Same-day delivery within Kampala for urgent needs",
-        },
-        {
-          icon: <IoConstruct />,
-          title: "Installation Service",
-          desc: "Professional installation by our skilled technicians",
-        },
-      ],
-      categories: [
-        {
-          icon: <IoSpeedometer />,
-          name: "Engine Parts",
-          items: ["Pistons", "Filters", "Belts", "Spark Plugs"],
-        },
-        {
-          icon: <FaBatteryHalf />,
-          name: "Electrical",
-          items: ["Batteries", "Lights", "Wiring", "Alternators"],
-        },
-        {
-          icon: <GiCarWheel />,
-          name: "Body & Chassis",
-          items: ["Panels", "Doors", "Mirrors", "Bumpers"],
-        },
-        {
-          icon: <GiMechanicGarage />,
-          name: "Accessories",
-          items: ["Seat Covers", "Mats", "Mirrors", "Tool Kits"],
-        },
-      ],
-    },
-  };
-
-  const faqs = [
-    {
-      question: "How long is the warranty on new TukTuks?",
-      answer:
-        "All new Kainiu TukTuks come with a comprehensive 12-month warranty covering parts and labor.",
-    },
-    {
-      question: "Do you offer financing options?",
-      answer:
-        "Yes, we provide flexible financing plans with competitive interest rates. Down payment starts from 30%.",
-    },
-    {
-      question: "How quickly can repairs be completed?",
-      answer:
-        "Most standard repairs are completed within 24-48 hours. Emergency repairs receive priority treatment.",
-    },
-    {
-      question: "Are your spare parts genuine?",
-      answer:
-        "Yes, we only stock and sell genuine Kainiu parts to ensure optimal performance and longevity.",
-    },
-  ];
-
+  const navigate = useNavigate();
   const currentService = detailedServices[activeService];
 
   return (
@@ -271,11 +35,17 @@ const ServicesPage = () => {
             trusted Kainiu dealer in Uganda
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
+            <button
+              onClick={handleWhatsApp}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
+            >
               <FaWhatsapp />
               <span>WhatsApp Us</span>
             </button>
-            <button className="border border-white hover:bg-white hover:text-blue-900 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
+            <button
+              onClick={handleCall}
+              className="border border-white hover:bg-white hover:text-blue-900 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
+            >
               <FaPhone />
               <span>Call Now</span>
             </button>
@@ -372,9 +142,6 @@ const ServicesPage = () => {
                     <h4 className="text-xl font-bold text-blue-900 mb-2">
                       {model.name}
                     </h4>
-                    <p className="text-2xl font-bold text-orange-500 mb-4">
-                      {model.price}
-                    </p>
                     <ul className="space-y-2">
                       {model.features.map((feature, idx) => (
                         <li
@@ -386,7 +153,10 @@ const ServicesPage = () => {
                         </li>
                       ))}
                     </ul>
-                    <button className="w-full mt-4 bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                    <button
+                      onClick={() => navigate("/contact")}
+                      className="w-full mt-4 bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg font-semibold transition-colors"
+                    >
                       Get Quote
                     </button>
                   </div>
@@ -506,11 +276,17 @@ const ServicesPage = () => {
             services
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
+            <button
+              onClick={() => navigate("/contact")}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
+            >
               <FaCalendarAlt />
               <span>Book Service</span>
             </button>
-            <button className="border border-white hover:bg-white hover:text-blue-900 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
+            <button
+              onClick={() => navigate("/contact")}
+              className="border border-white hover:bg-white hover:text-blue-900 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
+            >
               <FaWhatsapp />
               <span>Get Quote</span>
             </button>
