@@ -1,6 +1,7 @@
 import React from "react";
 import { FaPhone, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 import Logo from "./Logo";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -19,24 +20,36 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4 montserrat">Services</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <Link
+                  to="/services"
+                  className="hover:text-[#FF8C42] transition-colors"
+                >
                   TukTuk Sales
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <Link
+                  to="/services"
+                  className="hover:text-[#FF8C42] transition-colors"
+                >
                   Repairs & Maintenance
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <Link
+                  to="/services"
+                  className="hover:text-[#FF8C42] transition-colors"
+                >
                   Spare Parts
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <Link
+                  to="/services"
+                  className="hover:text-[#FF8C42] transition-colors"
+                >
                   Financing
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -45,24 +58,34 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4 montserrat">Company</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <Link
+                  to="/about"
+                  className="hover:text-[#FF8C42] transition-colors"
+                >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <a
+                  href="https://www.kainiuinvestmentsltd.com/"
+                  target="_blank"
+                  className="hover:text-[#FF8C42] transition-colors"
+                >
                   Why Kainiu
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <Link
+                  to="/contact"
+                  className="hover:text-[#FF8C42] transition-colors"
+                >
                   Customer Support
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF8C42] transition-colors">
+                <Link to="/" className="hover:text-[#FF8C42] transition-colors">
                   Careers
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -72,11 +95,11 @@ const Footer = () => {
             <div className="space-y-2 text-sm">
               <div className="flex items-center space-x-2">
                 <FaPhone />
-                <span>+256 700 123 456</span>
+                <span>+256 744 688 477</span>
               </div>
               <div className="flex items-center space-x-2">
                 <FaWhatsapp />
-                <span>+256 700 123 456</span>
+                <span>+256 751 773 769</span>
               </div>
               <div className="flex items-center space-x-2">
                 <FaMapMarkerAlt />
@@ -87,7 +110,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-sm opacity-90">
-          <p>&copy; 2024 Byoreko Holdings Limited. All rights reserved.</p>
+          <p>&copy; 2025 Byoreko Holdings Limited. All rights reserved.</p>
         </div>
       </div>
     </footer>
